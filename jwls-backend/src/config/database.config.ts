@@ -1,5 +1,12 @@
-export default () => (
-    {
-        mongoURI: process.env.MONGO_URI || 'mongodb://localhost:27017/jeweller_management',
-        port: (process.env.PORT || 5000, 10) as number,
-      });
+import { ConfigService } from '@nestjs/config';
+import { MongooseModuleOptions } from '@nestjs/mongoose';
+
+export const getDatabaseConfig = (
+  configService: ConfigService,
+): MongooseModuleOptions => ({
+  uri: configService.get<string>('MONGODB_URI'),
+  dbName: configService.get<string>('MONGODB_DB_NAME'),
+  retryAttempts: 3,
+  retryDelay: 1000,
+});
+

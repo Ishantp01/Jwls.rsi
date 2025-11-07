@@ -1,33 +1,63 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type shopDocument = Shop & Document;
+export type ShopDocument = Shop & Document;
 
-@Schema({timestamps: true})
+@Schema({ timestamps: true })
 export class Shop {
-    @Prop({required: true, unique: true})
-    name: string;
+  @Prop({ required: true, unique: true })
+  subdomain: string;
 
-    @Prop({required: true, unique: true})
-    subDomain: string;
+  @Prop({ required: true })
+  name: string;
 
-    @Prop()
-    customDomain?: string;
+  @Prop()
+  logo?: string;
 
-    @Prop({required: true})
-    status: string;
+  @Prop({ required: true, unique: true })
+  email: string;
 
-    @Prop({type: Date, default: null})
-    subscriptionExpiresAt?: Date;
+  @Prop()
+  phone?: string;
 
-    @Prop()
-    contactEmail?: string;
+  @Prop()
+  address?: string;
 
-    @Prop()
-    contactPhone?: string;
+  @Prop()
+  city?: string;
 
-    @Prop({type: Object, default: {}})
-    meta?: Record<string, any>;
+  @Prop()
+  state?: string;
+
+  @Prop()
+  country?: string;
+
+  @Prop()
+  pincode?: string;
+
+  @Prop()
+  gstNumber?: string;
+
+  @Prop()
+  panNumber?: string;
+
+  @Prop({ default: true })
+  isActive: boolean;
+
+  @Prop()
+  planType?: string;
+
+  @Prop()
+  planExpiryDate?: Date;
+
+  @Prop({ type: Object })
+  settings?: {
+    currency: string;
+    timeZone: string;
+    dateFormat: string;
+    weightUnit: string;
+  };
 }
 
 export const ShopSchema = SchemaFactory.createForClass(Shop);
+
