@@ -19,6 +19,6 @@ export class CreateShopDto {
 
     @IsOptional()
     @IsString()
-    contactPhon?: string;
+    contactPhone?: string;
 
 }

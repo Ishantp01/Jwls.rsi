@@ -12,13 +12,13 @@ export class Shop {
     subDomain: string;
 
     @Prop()
-    customeDomain?: string;
+    customDomain?: string;
 
     @Prop({required: true})
     status: string;
 
     @Prop({type: Date, default: null})
-    subscriptonExpiresAt?: Date;
+    subscriptionExpiresAt?: Date;
 
     @Prop()
     contactEmail?: string;
